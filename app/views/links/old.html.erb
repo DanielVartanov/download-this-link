@@ -1,0 +1,4 @@
+<% form_for @link, :action => resource(:links) do |form| %>
+  <%= form.text_field :uri %>
+  <%= form.submit "Post link" %>
+<% end %>

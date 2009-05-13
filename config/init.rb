@@ -3,9 +3,11 @@
 # Specify a specific version of a dependency
 # dependency "RedCloth", "> 3.0"
 
- use_orm :activerecord
+require 'config/dependencies.rb'
+
+use_orm :activerecord
 use_test :rspec
-use_template_engine :erb
+use_template_engine :haml
  
 Merb::Config.use do |c|
   c[:use_mutex] = false
