@@ -6,7 +6,7 @@ class Links < Application
   end
 
   def create
-    @link = Link.new(params[:link])
+    @link = Link.new(params[:link].merge(:status => 'Queued'))
     if @link.save
       run_later { start_download(@link) }
       redirect resource(@link)
