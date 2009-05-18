@@ -18,4 +18,5 @@ src/*
 .svn/*
 gems/gems/*
 gems/specifications/*
-merb_profile_results
+merb_profile_resultspublic/files
+public/files/

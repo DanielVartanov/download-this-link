@@ -1,0 +1,6 @@
+%p
+  Status
+  = @link.status
+
+- if @link.status == 'Downloaded'
+  = link_to 'Скачать файл', absolute_url('files/' + @link.file_path)

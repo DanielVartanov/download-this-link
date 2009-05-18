@@ -1,2 +1,6 @@
-- @links.each do |link|
-  %p= link.url
+%table
+  - @links.each do |link|
+    %tr
+      %td= link.url
+      %td= link.status
+      %td= link_to 'Скачать файл', absolute_url('files/' + link.file_path) if link.status == 'Downloaded'
