@@ -21,7 +21,9 @@ class Links < Application
   end
 
   def index
+    puts "asdfsasadfd"
     @links = Link.all
+    puts "zzzzzzzzzz"
     display @links
   end
 

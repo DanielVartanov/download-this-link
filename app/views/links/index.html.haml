@@ -1,6 +1,22 @@
-%table
-  - @links.each do |link|
+= render :partial => 'header'
+%div{:align => "center"}
+  %table{:width => "900px", :border => "0", :align => "center", :bordercolor => "#336699", :cellpadding => "2", :cellspacing => "2" }
+    %tr{:align => "left"}
+      %td{ :bgcolor => "#cccccc" }
+        %h1= 'Link`s status'
+        %hr{ :size =>4, :color => "#ff0000"}
     %tr
-      %td= link.url
-      %td= link.status
-      %td= link_to 'Скачать файл', absolute_url('files/' + link.file_path) if link.status == 'Downloaded'
+      %td
+        %table{:width => "900px", :border => "0" }
+          %tr{ :align => "Left" }
+            %th
+              %h2= 'Link'
+            %th
+              %h2= 'Status'
+            %th
+              %h2= 'Download'
+          - @links.each do |link|
+            %tr{ :align => "Left" }
+              %td= link.url
+              %td= link.status
+              %td= link_to 'Скачать файл', absolute_url('files/' + link.file_path) if link.status == 'Downloaded'

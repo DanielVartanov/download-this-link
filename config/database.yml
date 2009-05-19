@@ -1,9 +1,12 @@
 ---
 # This is a sample database file for the ActiveRecord ORM
+
 :development: &defaults
-  :adapter: sqlite3
-  :database: development.sqlite
-  :encoding: utf8
+  :adapter: mysql
+  :database: download_kg
+  :host: 127.0.0.1
+  :username: root
+  :password: qweasd
 
 :test:
   <<: *defaults
