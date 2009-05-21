@@ -3,7 +3,6 @@
   %head
     %title
   %body
-    =# render :partial => 'header'
-    - #= message[:notice]
-    =# catch_content :for_layout
-    =#render :partial => 'footer'
+    = render :partial => 'header'    
+    = catch_content :for_layout
+    = render :partial => 'footer'

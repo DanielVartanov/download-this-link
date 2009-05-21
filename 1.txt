@@ -1,6 +1,0 @@
-(in c:/Users/Andrew/donwload-this-link)
-Loading init file from c:/Users/Andrew/donwload-this-link/config/init.rb
-Loading c:/Users/Andrew/donwload-this-link/config/environments/development.rb
-Loading c:/Users/Andrew/donwload-this-link/config/environments/development.rb
- ~ Connecting to database...
-Завершить выполнение пакетного файла [Y(да)/N(нет)]? 
