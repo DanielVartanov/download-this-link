@@ -1,0 +1,16 @@
+---
+
+:development: &defaults
+  :adapter: sqlite3
+  :database: development.sqlite
+
+:test:
+  <<: *defaults
+  :database: test.sqlite
+
+:production:
+  <<: *defaults
+  :database: production.sqlite
+
+:rake:
+  <<: *defaults
