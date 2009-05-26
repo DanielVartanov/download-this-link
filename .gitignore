@@ -19,5 +19,5 @@ src/*
 gems/gems/*
 gems/specifications/*
 merb_profile_resultspublic/files
-public/files/
+public/files/*
 config/database.yml

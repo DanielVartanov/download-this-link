@@ -1,0 +1,9 @@
+!!! Strict
+%html
+  %head
+    %title "Download!"
+    = css_include_tag :master
+  %body
+    = partial 'layout/header'
+    = catch_content :for_layout
+    = partial 'layout/footer'
