@@ -1,7 +1,16 @@
-#!/usr/bin/env ruby
-
-require "merb-core"
-Merb.start_environment(:environment => ENV['MERB_ENV'] || 'development')
+class DownloadFilesLoop < Loops::Base
+  def run
+    with_period_of(5) do
+      puts "Hello, loop!"
+      unless queue_is_empty?
+        puts "Starting file #{Link.queued.first.inspect}"
+        start_download Link.queued.first
+      else
+        puts "No files in queue..."
+      end
+    end
+  end
+end
 
 def start_download(link)
   link.update_attribute(:status, "downloading")
@@ -19,10 +28,6 @@ def generate_file_name
   "file-#{rand(1000000000)}"
 end
 
-loop do
-  if Link.queued.count > 0
-    start_download Link.queued.first
-  end
-
-  sleep 1
+def queue_is_empty?
+  Link.queued.count == 0
 end
