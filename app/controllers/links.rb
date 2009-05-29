@@ -10,7 +10,7 @@ class Links < Application
     if @link.save      
       redirect resource(@link)
     else
-      render :new
+      render :index
     end
   end
 
@@ -20,6 +20,7 @@ class Links < Application
   end
 
   def index
+    @link = Link.new(params[:link])
     @links = Link.all
     display @links
   end
