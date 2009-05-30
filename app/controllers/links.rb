@@ -7,11 +7,9 @@ class Links < Application
 
   def create
     @link = Link.new(params[:link].merge(:status => 'queued'))
-    if @link.save      
-      redirect resource(@link)
-    else
-      render :index
-    end
+    @link.save
+    @links = Link.all
+    render :index
   end
 
   def show

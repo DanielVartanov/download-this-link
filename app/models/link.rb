@@ -1,5 +1,9 @@
 class Link < ActiveRecord::Base
+  WRONG_URL_MESSAGE = 'Wrong URL!'
+
   validate :url_is_well_formed
+
+  validates_presence_of :url, :message => WRONG_URL_MESSAGE
 
   validates_inclusion_of :status, :in => %w(queued downloading downloaded)
 
@@ -9,7 +13,7 @@ class Link < ActiveRecord::Base
     begin
       URI.parse self.url
     rescue URI::InvalidURIError
-      errors.add(:url, 'Ссылка какая-то странная')
+      errors.add(:url, WRONG_URL_MESSAGE)
     end
   end
 

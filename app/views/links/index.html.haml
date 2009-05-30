@@ -4,7 +4,7 @@
       %td
         = error_messages_for @link, :header => "<h2>Ошибка</h2>"
         = form_for @link, :action => resource(:links) do
-          %p= text_field :url
+          %p= text_field :url, :label => "URL"
           %p= submit "Post link"
     %tr{:align => "left"}
       %td
@@ -24,7 +24,7 @@
               %h2= 'Download'
           - @links.each do |link|
             %tr{ :align => "Left" }
-              %td= link.url
+              %td= link_to link.url, link.url
               %td= link.created_at
               %td= link.status
-              %td= link_to 'Скачать файл', absolute_url('files/' + link.file_path) if link.status == 'downloaded'
+              %td= link_to 'Скачать файл', absolute_url('files/' + link.file_path) if link.downloaded?
