@@ -5,7 +5,7 @@ class Link < ActiveRecord::Base
 
   validates_presence_of :url, :message => WRONG_URL_MESSAGE
 
-  validates_inclusion_of :status, :in => %w(queued downloading downloaded)
+  validates_inclusion_of :status, :in => %w(queued downloading downloaded, failure)
 
   named_scope :queued, :conditions => { :status => 'queued' }
 
