@@ -21,3 +21,7 @@ end
 Then /^I should not be redirected$/ do
   webrat_session.response.should be_successful
 end
+
+Then /^I should be redirected to "(.*)"$/ do |url|
+  URI.parse(webrat_session.response.url).path.should == url
+end

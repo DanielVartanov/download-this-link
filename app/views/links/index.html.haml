@@ -1,30 +1,16 @@
-%div{:align => "center"}
-  %table{:width => "900px", :border => "0", :align => "center", :bordercolor => "#336699", :cellpadding => "2", :cellspacing => "2" }
-    %tr{:align => "left"}
-      %td
-        = error_messages_for @link, :header => "<h2>Ошибка</h2>"
-        = form_for @link, :action => resource(:links) do
-          %p= text_field :url, :label => "URL"
-          %p= submit "Post link"
-    %tr{:align => "left"}
-      %td
-        %h1= 'Link`s status'
-        %hr{ :size =>4, :color => "#ff0000"}
-    %tr
-      %td
-        %table{:width => "900px", :border => "0" }
+%table{:width => "900px", :border => "0", :align => "center", :bordercolor => "#336699", :cellpadding => "2", :cellspacing => "2" }  
+  %tr
+    %td
+      %table{:width => "900px", :border => "0" }
+        %tr{ :align => "Left" }
+          %th
+            %h2= 'Ссылка'
+          %th
+            %h2= 'Состояние'
+          %th
+            %h2= 'Download'
+        - @links.each do |link|
           %tr{ :align => "Left" }
-            %th
-              %h2= 'Link'
-            %th
-              %h2= 'Start date'
-            %th
-              %h2= 'Status'
-            %th
-              %h2= 'Download'
-          - @links.each do |link|
-            %tr{ :align => "Left" }
-              %td= link_to link.url, link.url
-              %td= link.created_at
-              %td= link.status
-              %td= link_to 'Скачать файл', absolute_url('files/' + link.file_path) if link.downloaded?
+            %td= link_to link.url, link.url
+            %td= link.status
+            %td= link_to 'Скачать файл', absolute_url('files/' + link.file_path) if link.downloaded?

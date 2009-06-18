@@ -74,11 +74,17 @@ h3 {
 }
 
 #main-container {
-  margin: 5px 5px 5px 260px;
-  padding: 15px;
-  border-left: 1px solid silver;
-  min-height: 400px;
+
 }
+
+#header-container {
+
+}
+
+#footer-container {
+
+}
+
 p {
   color: #000;
   background-color: #fff;

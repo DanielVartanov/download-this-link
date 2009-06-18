@@ -1,5 +1,5 @@
 = error_messages_for @link, :header => "<h2>Ошибка</h2>"
 
 = form_for @link, :action => resource(:links) do
-  %p= text_field :url
-  %p= submit "Post link"
+  = text_field :url, :label => "URL", :size => 50
+  = submit "Добавить ссылку"

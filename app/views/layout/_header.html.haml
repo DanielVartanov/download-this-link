@@ -1,10 +1,7 @@
-%div{:align => "center"}
-  %table{:width => "900px", :border => "0", :align => "center", :bordercolor => "#336699", :cellpadding => "2", :cellspacing => "2" }
-    %tr{:align => "left"}
-      %td
-        %h1= 'Download.kg'
-    %tr
-      %td{:align=> "left"}
-        =' '
-
-  
+%table{:width => "900px", :border => "0", :align => "center", :bordercolor => "#336699", :cellpadding => "2", :cellspacing => "2" }
+  %tr{:align => "left"}
+    %td
+      %h1 Skachai.kg
+  %tr
+    %td{:align=> "left"}
+      = link_to "Добавить ссылку в очередь", resource(:links, :new)

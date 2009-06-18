@@ -7,9 +7,11 @@ class Links < Application
 
   def create
     @link = Link.new(params[:link].merge(:status => 'queued'))
-    @link.save
-    @links = Link.all
-    render :index
+    if @link.save
+      redirect resource(:links)
+    else
+      render :new
+    end
   end
 
   def show
@@ -17,8 +19,7 @@ class Links < Application
     display @link
   end
 
-  def index
-    @link = Link.new(params[:link])
+  def index    
     @links = Link.all
     display @links
   end

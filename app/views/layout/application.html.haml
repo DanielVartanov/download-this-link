@@ -1,9 +1,12 @@
 !!! Strict
 %html
   %head
-    %title "Download!"
+    %title "Качаем файлы в внешки бесплатно"
     = css_include_tag :master
   %body
-    = partial 'layout/header'
-    = catch_content :for_layout
-    = partial 'layout/footer'
+    #header-container{:align => "center"}
+      = partial 'layout/header'
+    #main-container{:align => "center"}
+      = catch_content :for_layout
+    #footer-container{:align => "center"}
+      = partial 'layout/footer'
