@@ -10,7 +10,7 @@ class Downloader
     @curl.follow_location = true
 
     @curl.on_progress do |dl_total, dl_now, ul_total, ul_now|
-      puts "on_progress: #{dl_now} of #{dl_total} (#{@curl.download_speed} b/s) #{@curl.total_time}s"
+      self.on_progress(dl_now, dl_total, @curl.download_speed, @curl.total_time)
       true
     end
 
@@ -36,6 +36,15 @@ class Downloader
 
   def on_body(data)
     @file.print(data)
+  end
+
+  def on_progress(downloaded_size, total_size, download_speed, downloading_time)    
+    return if @link.downloading_time.to_i == downloading_time.to_i
+
+    @link.downloading_time = downloading_time.to_i
+    @link.download_speed = download_speed
+    @link.complete_percentage = downloaded_size.zero? ? 0 : (downloaded_size.to_f / total_size * 100).to_i
+    @link.save
   end
 
   def on_complete
@@ -76,6 +85,6 @@ class Downloader
 
   rescue Exception => e
     link.update_attribute(:status, "failure")
-      link.update_attribute(:error_message, e.to_s)
+    link.update_attribute(:error_message, e.to_s)
   end
 end
