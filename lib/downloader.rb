@@ -74,6 +74,7 @@ class Downloader
 
   def self.start!(link)
     file_size = Downloader.request_file_size!(link.url)
+    link.update_attribute(:file_size, file_size)
 
     if file_size <= MAX_DOWNLOAD_SIZE
       downloader = Downloader.new(link)      

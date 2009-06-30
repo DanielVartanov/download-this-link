@@ -4,13 +4,28 @@
       %table{:width => "900px", :border => "0" }
         %tr{ :align => "Left" }
           %th
-            %h2= 'Ссылка'
+            %h2
+              Ссылка
           %th
-            %h2= 'Состояние'
+            %h2 
+              Состояние
           %th
-            %h2= 'Download'
+            %h2
+              Размер
+          %th
+            %h2
+              Скорость(б\с)
+          %th
+            %h2
+              Время(с)
+          %th
+            %h2
+              Скачать
         - @links.each do |link|
           %tr{ :align => "Left" }
-            %td= link_to link.url, link.url
+            %td= link_to link.url[0..30], link.url
             %td= link.status
+            %td= link.file_size
+            %td= link.download_speed
+            %td= link.downloading_time
             %td= link_to 'Скачать файл', absolute_url('files/' + link.file_path) if link.downloaded?
