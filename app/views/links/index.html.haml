@@ -23,7 +23,7 @@
               Скачано
           %th
             %h2
-              Скачать
+              Скачать файл
         - @links.each do |link|
           %tr{ :align => "Left" }
             %td= link_to link.url[0..30], link.url
@@ -32,4 +32,4 @@
             %td= link.download_speed
             %td= link.downloading_time
             %td= "#{link.complete_percentage}%"
-            %td= link_to 'Скачать файл', absolute_url('files/' + link.file_path) if link.downloaded?
+            %td= link_to 'Файл', absolute_url('files/' + link.file_path) if link.downloaded?

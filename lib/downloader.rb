@@ -25,8 +25,10 @@ class Downloader
     filename = generate_file_name
     @file = File.open(Merb.root / 'public' / 'files' / filename, 'w')
 
-    @link.update_attribute(:status, "downloading")    
-    @link.update_attribute(:file_path, filename)
+    @link.status = "downloading"
+    @link.file_path = filename
+    @link.save!
+
     @curl.perform
   end
 
@@ -52,8 +54,10 @@ class Downloader
     @file.close
   end
 
-  def on_success    
-    @link.update_attribute(:status, "downloaded")
+  def on_success
+    @link.status = "downloaded"
+    @link.complete_percentage = 100
+    @link.save!
   end
 
   def on_failure
@@ -80,12 +84,14 @@ class Downloader
       downloader = Downloader.new(link)      
       downloader.download!
     else
-      link.update_attribute(:status, "failure")
-      link.update_attribute(:error_message, "File is too big")
+      link.update_attribute.status = "failure"
+      link.update_attribute.error_message = "File is too big"
+      link.save!
     end
 
   rescue Exception => e
-    link.update_attribute(:status, "failure")
-    link.update_attribute(:error_message, e.to_s)
+    link.status = "failure"
+    link.error_message = e.to_s
+    link.save!
   end
 end
