@@ -38,5 +38,6 @@ Merb::Router.prepare do
   # clients from calling your create or destroy actions with a GET
   default_routes 
 
-  match('/').to(:controller => 'links', :action =>'index')
+  # match('/').to(:controller => 'links', :action =>'index')
+  match('/').to(:controller => 'links', :action =>'new')
 end

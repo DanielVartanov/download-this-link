@@ -1,5 +1,18 @@
 = error_messages_for @link, :header => "<h2>Ошибка</h2>"
-
-= form_for @link, :action => resource(:links) do
-  = text_field :url, :label => "URL", :size => 50
-  = submit "Добавить ссылку"
+%table{:align=> "center",:width => "900"}
+  %tr{:align=> "center",:width => "900"}
+    %td{:width => "745", :valign => "top"}
+      = form_for @link, :action => resource(:links) do
+        %p{:align=> "left"}
+          = text_field :url, :label => "URL ", :size => 50
+        %p{:align=> "left"}
+          = text_field :file_about, :label => "Описание ", :size =>100
+        %p{:align =>"right"}
+          = submit "Добавить ссылку"
+    %td{:width => "155"}
+      %p{:align => "center"}
+        %img{:src=> "/banner/150x180.jpg"}
+      %p{:align => "center"}
+        %img{:src=> "/banner/150x180.jpg"}
+      %p{:align => "center"}
+        %img{:src=> "/banner/150x180.jpg"}

@@ -1,7 +1,13 @@
+%div{:align=>"center"}
+  %a{:href => "www.kg"}
+    %img{:src =>"/banner/985x100.jpg"}
+
 %table{:width => "900px", :border => "0", :align => "center", :bordercolor => "#336699", :cellpadding => "2", :cellspacing => "2" }
   %tr{:align => "left"}
     %td
-      %h1 Skachai.kg
+      %h1 Pump.kg
   %tr
-    %td{:align=> "left"}
+    %td{:align=> "left", :width =>"200"}
       = link_to "Добавить ссылку в очередь", resource(:links, :new)
+    %td{:align=> "left"}
+      = link_to "Журнал закачек", resource(:links)
