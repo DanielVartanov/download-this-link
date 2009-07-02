@@ -1,8 +1,11 @@
 %br/
-%table{:width => "900px", :border => "0", :align => "center", :valign => "top",:bordercolor => "#336699", :cellpadding => "2", :cellspacing => "2" }
+%table{:width => "985px", :border => "0", :align => "center", :valign => "top",:bordercolor => "#336699", :cellpadding => "2", :cellspacing => "2" }
+  %tr
+    %td{:align => "left"}
+      = link_to "Добавить ссылку в очередь", resource(:links, :new)
   %tr{:valign => "top"}
     %td
-      %table{:width => "755px", :border => "0" }
+      %table{:width => "830px", :border => "0" }
         %tr{ :align => "left" }
           %th
             %h2
@@ -35,7 +38,8 @@
               ="Качаю" if link.status == "downloading"
               ="Скачено" if link.status == "downloaded"
               ="Ошибка" if link.status == "failure"
-            %td= link.file_size
+            %td
+              = (link.file_size / 1000000) if (link.file_size != nil) &&(link.file_size > 0)
             %td= link.download_speed
             %td= link.downloading_time
             %td= "#{link.complete_percentage}%"

@@ -1,15 +1,26 @@
 = error_messages_for @link, :header => "<h2>Ошибка</h2>"
-%table{:align=> "center",:width => "900"}
-  %tr{:align=> "center",:width => "900"}
-    %td{:width => "745", :valign => "top"}
+%br/
+%table{:align=> "center",:width => "995px"}
+  %tr{:align=>"left"}
+    %td
+      = link_to "Журнал закачек", resource(:links)
+  %tr{:align=> "center",:width => "985px"}
+    %td{:width => "830px", :valign => "top"}
       = form_for @link, :action => resource(:links) do
         %p{:align=> "left"}
-          = text_field :url, :label => "URL ", :size => 50
+          %b
+            = "URL:"
         %p{:align=> "left"}
-          = text_field :file_about, :label => "Описание ", :size =>100
-        %p{:align =>"right"}
+          = text_field :url,:size => 50
+        
+        %p{:align=> "left"}
+          %b
+            = "Описание:"
+        %p{:align=> "left"}
+          = text_field :file_about, :size =>100
+        %p{:align =>"left"}
           = submit "Добавить ссылку"
-    %td{:width => "155"}
+    %td{:width => "155px"}
       %p{:align => "center"}
         %img{:src=> "/banner/150x180.jpg"}
       %p{:align => "center"}
