@@ -2,7 +2,9 @@
 %table{:width => "985px", :border => "0", :align => "center", :valign => "top",:bordercolor => "#336699", :cellpadding => "2", :cellspacing => "2" }
   %tr
     %td{:align => "left"}
-      = link_to "Добавить ссылку в очередь", resource(:links, :new)
+      %p
+        = link_to "Добавить ссылку в очередь", resource(:links, :new)
+      %br/
   %tr{:valign => "top"}
     %td
       %table{:width => "830px", :border => "0" }
@@ -15,7 +17,7 @@
               Состояние
           %th
             %h2
-              Размер
+              Размер(мб)
           %th
             %h2
               Скорость(б\с)
@@ -27,7 +29,7 @@
               Скачано
           %th
             %h2
-              Скачать файл
+              
         - @links.each do |link|
           %tr{ :align => "Left" }
             %td{:width => "250"}
@@ -36,19 +38,20 @@
             %td
               ="В очереди" if link.status == "queued"
               ="Качаю" if link.status == "downloading"
-              ="Скачено" if link.status == "downloaded"
+              ="Готово" if link.status == "downloaded"
               ="Ошибка" if link.status == "failure"
             %td
               = (link.file_size / 1000000) if (link.file_size != nil) &&(link.file_size > 0)
             %td= link.download_speed
             %td= link.downloading_time
             %td= "#{link.complete_percentage}%"
-            %td= link_to 'Файл', absolute_url('files/' + link.file_path) if link.downloaded?
+            %td= link_to 'Скачать файл', absolute_url('files/' + link.file_path) if link.downloaded?
     %td{:width => "155"}
       %p{:align => "center"}
-        %img{:src=> "banner/150x180.jpg"}
+        %img{:src=> ""}
       %p{:align => "center"}
-        %img{:src=> "banner/150x180.jpg"}
+        %img{:src=> ""}
       %p{:align => "center"}
-        %img{:src=> "banner/150x180.jpg"}
+        %img{:src=> ""}
+      
        

@@ -3,7 +3,8 @@
 %table{:align=> "center",:width => "995px"}
   %tr{:align=>"left"}
     %td
-      = link_to "Журнал закачек", resource(:links)
+      %p
+        = link_to " Журнал закачек", resource(:links)
   %tr{:align=> "center",:width => "985px"}
     %td{:width => "830px", :valign => "top"}
       = form_for @link, :action => resource(:links) do
@@ -22,8 +23,9 @@
           = submit "Добавить ссылку"
     %td{:width => "155px"}
       %p{:align => "center"}
-        %img{:src=> "/banner/150x180.jpg"}
+        %img{:src=> ""}
       %p{:align => "center"}
-        %img{:src=> "/banner/150x180.jpg"}
+        %img{:src=> ""}
       %p{:align => "center"}
-        %img{:src=> "/banner/150x180.jpg"}
+        %img{:src=> ""}
+      
