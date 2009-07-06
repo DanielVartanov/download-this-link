@@ -20,7 +20,7 @@ class Links < Application
   end
 
   def index    
-    @links = Link.all
+    @links = Link.all :order => "created_at DESC"
     display @links
   end
 end
