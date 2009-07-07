@@ -1,31 +1,41 @@
+require 'curb'
+
 class Downloader
-  MAX_DOWNLOAD_SIZE = 100000000
+  MAX_DOWNLOAD_SIZE = 1000000000
 
   def initialize(link)
     @link = link
+  end
+
+  def reinitialize_curl
     @curl = Curl::Easy.new
     @curl.url = @link.url
     @curl.follow_location = true
+  end
 
+  def setup_download_hooks
     @curl.on_progress do |dl_total, dl_now, ul_total, ul_now|
       self.on_progress(dl_now, dl_total, @curl.download_speed, @curl.total_time)
       true
     end
 
     @curl.on_body { |data| self.on_body(data); data.size }
-    @curl.on_header { |data| self.on_header(data); data.size }
     @curl.on_complete { |data| self.on_complete }
     @curl.on_failure { |data| self.on_failure }
     @curl.on_success { |data| self.on_success }
+    @curl.on_header { |data| self.on_header(data); data.size }
   end
 
-  def download!
-    filename = generate_file_name
+  def download!    
+    filename = FileNameSuggester.suggest_file_name! @link.url
     @file = File.open(Merb.root / 'public' / 'files' / filename, 'w')
 
     @link.status = "downloading"
     @link.file_path = filename
     @link.save!
+
+    reinitialize_curl
+    setup_download_hooks
 
     @curl.perform
   end
@@ -62,28 +72,27 @@ class Downloader
     @link.update_attribute(:status, "failure")
   end
 
-  def generate_file_name
-    "file-#{rand(1000000000)}"
+  def request_headers!
+    reinitialize_curl
+    @curl.http_head
   end
 
-  def self.request_file_size!(url)
-    curl = Curl::Easy.new
-    curl.url = url
-    curl.follow_location = true    
-    curl.http_head
-    curl.downloaded_content_length
+  def file_size
+    @curl.downloaded_content_length
   end
 
   def self.start!(link)
-    file_size = Downloader.request_file_size!(link.url)
+    downloader = Downloader.new(link)
+    downloader.request_headers!
+
+    file_size = downloader.file_size
     link.update_attribute(:file_size, file_size)
 
-    if file_size <= MAX_DOWNLOAD_SIZE
-      downloader = Downloader.new(link)      
+    if file_size <= MAX_DOWNLOAD_SIZE      
       downloader.download!
     else
-      link.update_attribute.status = "failure"
-      link.update_attribute.error_message = "File is too big"
+      link.status = "failure"
+      link.error_message = "File is too big"
       link.save!
     end
 

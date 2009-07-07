@@ -1,13 +1,12 @@
 class Link < ActiveRecord::Base
-  WRONG_URL_MESSAGE = 'Не верный URL!'
-  WRONG_ABOUT_MESSAGE = 'Описание превышает 250 символов'
-  attr_accessor :field
+  WRONG_URL_MESSAGE = 'Неверный URL!'
+  WRONG_ABOUT_MESSAGE = 'Описание превышает 250 символов'  
 
   validate :url_is_well_formed
 
   validates_presence_of :url, :message => WRONG_URL_MESSAGE
 
-  validates_length_of :file_about,:maximum=>250, :message => WRONG_ABOUT_MESSAGE
+  validates_length_of :file_about, :maximum => 250, :message => WRONG_ABOUT_MESSAGE
 
   validates_inclusion_of :status, :in => %w(queued downloading downloaded failure)
 
