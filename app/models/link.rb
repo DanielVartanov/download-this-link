@@ -1,8 +1,12 @@
 class Link < ActiveRecord::Base
   WRONG_URL_MESSAGE = 'Неверный URL!'
-  WRONG_ABOUT_MESSAGE = 'Описание превышает 250 символов'  
+  WRONG_ABOUT_MESSAGE = 'Описание превышает 250 символов'
+
+  before_validation :parse_url
 
   validate :url_is_well_formed
+
+  validate :url_protocol_is_http_or_ftp
 
   validates_presence_of :url, :message => WRONG_URL_MESSAGE
 
@@ -12,10 +16,22 @@ class Link < ActiveRecord::Base
 
   named_scope :queued, :conditions => { :status => 'queued' }
 
-  def url_is_well_formed
+  def parse_url
     begin
-      URI.parse self.url
+      @parsed_uri = URI.parse self.url
     rescue URI::InvalidURIError
+      @parsed_uri = nil
+    end
+  end
+
+  def url_is_well_formed
+    unless @parsed_uri and @parsed_uri.is_a?(URI)
+      errors.add(:url, WRONG_URL_MESSAGE)
+    end
+  end
+
+  def url_protocol_is_http_or_ftp
+    unless @parsed_uri and @parsed_uri.scheme and ['http', 'ftp'].include?(@parsed_uri.scheme.downcase)
       errors.add(:url, WRONG_URL_MESSAGE)
     end
   end

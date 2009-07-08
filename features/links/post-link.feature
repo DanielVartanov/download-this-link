@@ -8,39 +8,47 @@ Feature: Posting a link
 
   Scenario: User sees a new link form
     When I go to new link page
-    Then I should see "URL"
+    Then I should see "link_url"
     And I should see "Добавить ссылку"
 
   Scenario: User posts valid link
     When I go to new link page
-    And I fill in "URL" with "http://example.com"
+    And I fill in "link_url" with "http://example.com"
     And I press "Добавить ссылку"
     Then I should be redirected to links list
     And I should see a link to "http://example.com"
-    And I should see "queued"
+    And I should see "В очереди"
 
   Scenario: User tries to post invalid link
     When I go to new link page
-    And I fill in "URL" with "bla-bla-bla"
+    And I fill in "link_url" with "bla-bla-bla"
     And I press "Добавить ссылку"
     Then I should not be redirected
-    And I should see "Wrong URL!"
-    And I should not see a link to "http://example.com"
-    And I should not see "queued"
+    And I should see "Неверный URL!"
+    And I should not see a link to "bla-bla-bla"
+    And I should not see "В очереди"
 
   Scenario: User tries to post blank link
     When I go to new link page
-    And I fill in "URL" with ""
+    And I fill in "link_url" with ""
     And I press "Добавить ссылку"
     Then I should not be redirected
-    And I should see "Wrong URL!"
+    And I should see "Неверный URL!"
     And I should not see a link to ""
-    And I should not see "queued"
+    And I should not see "В очереди"
 
-  Scenario: User posts link without protocol
+  Scenario: User posts an FTP link
     When I go to new link page
-    And I fill in "URL" with "example.com"
+    And I fill in "link_url" with "ftp://example.com"
     And I press "Добавить ссылку"
     Then I should be redirected to links list
-    And I should see a link to "http://example.com"
-    And I should see "queued"
+    And I should see a link to "ftp://example.com"
+    And I should see "В очереди"
+
+  Scenario: User tries to post well formed link with some other protocol
+    When I go to new link page
+    And I fill in "link_url" with "svn://example.com"
+    And I press "Добавить ссылку"
+    And I should see "Неверный URL!"
+    And I should not see a link to "svn://example.com"
+    And I should not see "В очереди"
