@@ -41,7 +41,7 @@ class Link < ActiveRecord::Base
 
   def url_is_not_in_list_already
     links = Link.find_all_by_url self.url
-    good_links = links.select { |link| link.downloading? or link.downloaded? or link.queued? }
+    good_links = links.select { |link| (not link.failure?) and link.id != self.id }
     unless good_links.empty?
       errors.add(:url, URL_ALREADY_IN_THE_LIST)
     end
@@ -57,5 +57,9 @@ class Link < ActiveRecord::Base
 
   def queued?
     self.status == 'queued'
+  end
+
+  def failure?
+    self.status == 'failure'
   end
 end
