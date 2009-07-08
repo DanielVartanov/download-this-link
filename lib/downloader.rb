@@ -1,7 +1,7 @@
 require 'curb'
 
 class Downloader
-  MAX_DOWNLOAD_SIZE = 1000000000
+  MAX_DOWNLOAD_SIZE = 2500000000
 
   def initialize(link)
     @link = link
