@@ -52,3 +52,23 @@ Feature: Posting a link
     And I should see "Неверный URL!"
     And I should not see a link to "svn://example.com"
     And I should not see "В очереди"
+
+  Scenario: User tries to post a link which is already downloaded
+    Given I post link "http://movies.com/the-matrix.mov"
+    And Link "http://movies.com/the-matrix.mov" is downloaded
+    When I try to post link "http://movies.com/the-matrix.mov"
+    Then I should see "Эта ссылка уже есть в списке"
+
+  Scenario: User tries to post a link which is queued
+    Given I post link "http://movies.com/the-matrix.mov"
+    And Link "http://movies.com/the-matrix.mov" is queued
+    When I try to post link "http://movies.com/the-matrix.mov"
+    Then I should see "Эта ссылка уже есть в списке"
+
+  Scenario: User tries to post a link which is failure
+    Given I post link "http://movies.com/the-matrix.mov"
+    And Link "http://movies.com/the-matrix.mov" is failure
+    When I try to post link "http://movies.com/the-matrix.mov"
+    Then I should be redirected to links list
+    And I should see a link to "http://movies.com/the-matrix.mov"
+    And I should see "В очереди"
