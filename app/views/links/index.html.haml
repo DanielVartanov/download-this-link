@@ -46,7 +46,7 @@
             %td= link.download_speed
             %td= link.downloading_time
             %td= link.complete_percentage.nil? ? '-' : "#{link.complete_percentage}%"
-            %td= link_to 'Скачать файл', absolute_url('files/' + link.file_path) if link.downloaded?
+            %td= link_to 'Скачать файл', absolute_url('files/' + URI.escape(link.file_path)) if link.downloaded?
     %td{:width => "155"}
       %p{:align => "center"}
       %p{:align => "center"}
