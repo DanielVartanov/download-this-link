@@ -18,40 +18,40 @@
               Состояние
           %th
             %h2
-              Размер(мб)
+              Размер
+              %br/
+              (Мб)
           %th
             %h2
-              Скорость(б\с)
+              Скорость 
+              %br/
+              (Кб\с)
           %th
             %h2
-              Время(с)
+              Время              
           %th
             %h2
               Скачано
           %th
             %h2
-              
+
         - @links.each do |link|
           %tr{ :align => "Left" }
             %td{:width => "250"}
               = link_to link.url[0..30], link.url
-              %h5=link.file_about
+              %h5= link.description
             %td
               ="В очереди" if link.status == "queued"
               ="Качаю" if link.status == "downloading"
               ="Готово" if link.status == "downloaded"
               ="Ошибка" if link.status == "failure"
-            %td
-              = (link.file_size / 1000000) if (link.file_size != nil) &&(link.file_size > 0)
-            %td= link.download_speed
-            %td= link.downloading_time
+            %td= link.file_size.nil? ? '-' : (link.file_size / 1.megabyte)
+            %td= link.download_speed.nil? ? '-' : '%.1f' % (link.download_speed.to_f / 1.kilobyte)
+            %td= link.downloading_time.nil? ? '-' : display_downloading_time(link.downloading_time.to_i)
             %td= link.complete_percentage.nil? ? '-' : "#{link.complete_percentage}%"
             %td= link_to 'Скачать файл', absolute_url('files/' + URI.escape(link.file_path)) if link.downloaded?
-    %td{:width => "155"}
-      %p{:align => "center"}
-      %p{:align => "center"}
-      %p{:align => "center"}
+    %td{ :width => "155" }
+      %p{ :align => "center" }
+      %p{ :align => "center" }
+      %p{ :align => "center" }
   = will_paginate @links
-        
-      
-       

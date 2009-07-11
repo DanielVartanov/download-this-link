@@ -1,30 +1,27 @@
 = error_messages_for @link, :header => "<h2>Ошибка</h2>"
 %br/
-%table{:align=> "center",:width => "995px",:height =>"450px"}
+%table{:align=> "center", :width => "995px", :height =>"450px"}
   %tr{:align=>"left"}
     %td
       %p
         = link_to " Журнал закачек", resource(:links)  
-  %tr{:align=> "center",:width => "985px"}
+  %tr{:align=> "center", :width => "985px"}
     %td{:width => "830px", :valign => "top"}
       = form_for @link, :action => resource(:links) do
         %h2 Ограничение на размер файла - 2.5Гб
-        %p{:align=> "left"}          
+        %p{:align=> "left"}
           %b
             = "URL:"
         %p{:align=> "left"}
-          = text_field :url,:size => 50
-        
+          = text_field :url,:size => 50        
         %p{:align=> "left"}
           %b
             = "Описание:"
         %p{:align=> "left"}
-          = text_field :file_about, :size =>100
+          = text_field :description, :size =>100
         %p{:align =>"left"}
           = submit "Добавить ссылку"
     %td{:width => "155px"}
       %p{:align => "center"}
       %p{:align => "center"}
-      %p{:align => "center"}
-        
-      
+      %p{:align => "center"}              
