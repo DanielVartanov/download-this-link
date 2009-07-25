@@ -2,10 +2,12 @@ require 'timeout'
 
 class DownloadFilesLoop < Loops::Base
   def run
-    with_period_of(5) do      
+    with_period_of(300) do
       unless queue_is_empty?
-        puts "Starting file #{Link.queued.first.inspect}"
-        start_download Link.queued.first
+        if (Link.downloading.count < 3)
+          puts "Starting file #{Link.queued.first.inspect}"
+          start_download Link.queued.first
+        end 
       else
         print '.'
       end
@@ -26,6 +28,8 @@ end
 
 def downloader_process(link)
   begin
+    link.status = "downloading"
+    link.save;
     Timeout::timeout(14400, DownloadTimeoutException) { Downloader.start!(link) }
   rescue Exception => exception
     puts "==== UNHANDLED ERROR: #{exception}"
