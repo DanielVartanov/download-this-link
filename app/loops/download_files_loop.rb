@@ -28,8 +28,6 @@ end
 
 def downloader_process(link)
   begin
-    link.status = "downloading"
-    link.save;
     Timeout::timeout(14400, DownloadTimeoutException) { Downloader.start!(link) }
   rescue Exception => exception
     puts "==== UNHANDLED ERROR: #{exception}"
