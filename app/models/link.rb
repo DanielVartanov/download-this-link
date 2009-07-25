@@ -18,6 +18,7 @@ class Link < ActiveRecord::Base
   validates_inclusion_of :status, :in => %w(queued downloading downloaded failure)
 
   named_scope :queued, :conditions => { :status => 'queued' }
+  named_scope :downloading, :conditions => {:status => 'downloading'}
 
   def parse_url
     begin
