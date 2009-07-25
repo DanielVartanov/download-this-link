@@ -1,13 +1,16 @@
 require 'timeout'
-
 class DownloadFilesLoop < Loops::Base
+  DW_PROCESS_COUNT = 4
+
   def run
-    with_period_of(300) do
+    with_period_of(5) do
       unless queue_is_empty?
-        if (Link.downloading.count < 3)
+        if (Link.downloading.count < DW_PROCESS_COUNT)
           puts "Starting file #{Link.queued.first.inspect}"
           start_download Link.queued.first
-        end 
+        else
+          puts "Es gibt process limit."
+        end
       else
         print '.'
       end
@@ -28,6 +31,8 @@ end
 
 def downloader_process(link)
   begin
+    link.status = "downloading"
+    link.save
     Timeout::timeout(14400, DownloadTimeoutException) { Downloader.start!(link) }
   rescue Exception => exception
     puts "==== UNHANDLED ERROR: #{exception}"
