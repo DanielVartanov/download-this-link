@@ -7,7 +7,7 @@
         %tr{:align=>"left"}
           %td
             %p
-              = link_to "Поиск", :url_search
+              = link_to "Поиск", url(:controller => "search", :action => "index")
           %td
             %p
               = link_to " Журнал закачек", resource(:links)
@@ -32,12 +32,7 @@
           = submit "Добавить ссылку"
   %tr{:align=> "center", :width => "985px"}
     %td
-      = form_for :link, {:action => "url_search" } do
-        %h2 Поиск
-        %p{:align=> "left"}
-          %b
-            = "Чего ищем:"
-        %p{:align=> "left"}
-          = text_field :size => 150
-        %p{:align =>"left"}
-          = submit "Поиск"
+      %h2 Поиск
+      %p{:align=> "left"}
+        %b Поиск ссылки по URL'у:
+        = partial 'search/form'

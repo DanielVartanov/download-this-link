@@ -1,6 +1,49 @@
-%p
-  Status
-  = @link.status
+%br/
+%table{:width => "985px", :border => "0", :align => "center", :valign => "top",:bordercolor => "#336699", :cellpadding => "2", :cellspacing => "2" }
+  %tr{:valign => "top"}
+    %td
+      %table{:width => "830px", :border => "0" }
+        %tr{ :align => "left" }
+          %th
+            %h2
+              Ссылка
+          %th
+            %h2
+              Состояние
+          %th
+            %h2
+              Размер
+              %br/
+              (Мб)
+          %th
+            %h2
+              Скорость
+              %br/
+              (Кб\с)
+          %th
+            %h2
+              Время
+          %th
+            %h2
+              Скачано
+          %th
+            %h2
 
-- if @link.status == 'Downloaded'
-  = link_to 'Скачать файл', absolute_url('files/' + @link.file_path)
+        %tr{ :align => "Left" }
+          %td{:width => "250"}
+            = link_to @link.url[0..30], @link.url
+            %h5= @link.description
+          %td
+            ="В очереди" if @link.status == "queued"
+            ="Качаю" if @link.status == "downloading"
+            ="Готово" if @link.status == "downloaded"
+            ="Ошибка" if @link.status == "failure"
+          %td= @link.file_size.nil? ? '-' : (@link.file_size / 1.megabyte)
+          %td= @link.download_speed.nil? ? '-' : '%.1f' % (@link.download_speed.to_f / 1.kilobyte)
+          %td= @link.downloading_time.nil? ? '-' : display_downloading_time(@link.downloading_time.to_i)
+          %td= @link.complete_percentage.nil? ? '-' : "#{@link.complete_percentage}%"
+          %td= link_to 'Скачать файл', absolute_url('files/' + URI.escape(@link.file_path)) if @link.downloaded? and not @link.file_path.nil?
+    %td{ :width => "155" }
+      %p{ :align => "center" }
+      %p{ :align => "center" }
+      %p{ :align => "center" }
