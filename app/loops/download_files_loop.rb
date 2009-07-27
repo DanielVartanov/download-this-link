@@ -1,7 +1,7 @@
 require 'timeout'
   DW_PROCESS_TIME_OUT = 21600
 class DownloadFilesLoop < Loops::Base
-  DW_PROCESS_COUNT = 4
+  DW_PROCESS_COUNT = 1
 
   def run
     with_period_of(5) do
