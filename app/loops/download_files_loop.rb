@@ -1,4 +1,5 @@
 require 'timeout'
+  DW_PROCESS_TIME_OUT = 21600
 class DownloadFilesLoop < Loops::Base
   DW_PROCESS_COUNT = 4
 
@@ -33,7 +34,7 @@ def downloader_process(link)
   begin
     link.status = "downloading"
     link.save
-    Timeout::timeout(14400, DownloadTimeoutException) { Downloader.start!(link) }
+    Timeout::timeout(DW_PROCESS_TIME_OUT, DownloadTimeoutException) { Downloader.start!(link) }
   rescue Exception => exception
     puts "==== UNHANDLED ERROR: #{exception}"
   end
