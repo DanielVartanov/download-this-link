@@ -1,14 +1,15 @@
 %table{:width => "980px", :border => "0px", :height => "20px"}
   %tr
     %td{:align=>"left", :width => "150"}
-      = link_to "Поиск", url(:controller => "search", :action => "index")
+      = link_to "Добавить ссылку", resource(:links,:new)
     %td{:align => "left", :width => "150px"}
       = link_to " Журнал закачек", resource(:links)
     %td{:align => "right"}
       = link_to "Реклама на сайте","/reklama.html"
   %tr
     %td
-      &nbsp
+      %p
+        =" "
   %tr
     %td
       = form(:action => url(:controller => "search", :action => "index")) do
