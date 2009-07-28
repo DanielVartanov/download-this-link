@@ -23,4 +23,6 @@ class Links < Application
     @links = Link.paginate :page => params[:page], :per_page => 50, :order => 'created_at DESC'
     display @links
   end
+
+  
 end
