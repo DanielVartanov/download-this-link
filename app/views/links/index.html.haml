@@ -9,6 +9,11 @@
       %a{ :href => "http://pump.kg/reklama.html", :style => " color:#c55" }
         %span{ :style => "color:#c55" }
           Реклама на сайте
+      %br
+      %br
+  %tr
+    %td{:align => "center"}
+      = will_paginate @links
   %tr{:valign => "top", :align =>"left"}
     %td
       %table{:width => "830px", :border => "0" }
@@ -57,4 +62,3 @@
       %p{ :align => "center" }
       %p{ :align => "center" }
       %p{ :align => "center" }
-  = will_paginate @links
