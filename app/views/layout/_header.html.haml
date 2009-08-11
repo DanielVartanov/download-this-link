@@ -1,14 +1,29 @@
-%div{:align => "center"}
-  %object{:classid => "clsid:D27CDB6E-AE6D-11cf-96B8-444553540000", :width =>"985px", :height => "100px"}
-    %param{:name => "movie", :value => "/banner/capital_985-100.swf"}
-    %object{:type => "application/x-shockwave-flash", :data => "/banner/capital_985-100.swf", :width => "985px", :height => "100px"}
-
-%div{:align=>"center"}
-  
-
-%table{:width => "985px", :border => "0", :align => "center", :bordercolor => "#336699", :cellpadding => "2", :cellspacing => "2" }
-  %tr{:align => "left"}
-    %td
-      %h1 Pump.kg
-      %h2 качай сколько влезет ;-)
-  
+%title
+  Качаем с внешки бесплатно
+%link{ :href => "style.css", :rel => "stylesheet", :type => "text/css" }
+%center
+  /
+    begin of Top100 code
+  %script#top100Counter{ :type => "text/javascript", :src => "http://counter.rambler.ru/top100.jcn?1807849" }
+  %noscript
+    %img{ :src => "http://counter.rambler.ru/top100.cnt?1807849", :border => "0", :height => "1", :alt => "", :width => "1" }
+  /
+    end of Top100 code
+  %div{ :align => "left", :style => "width:985px; height:155px; max-width:985px; max-height:155px; margin: 0px" }
+    /
+      \-------- Top Banner Place --------
+    %table{ :border => "0px", :height => "105px", :width => "985px" }
+      %tr
+        %td
+          %object{ :height => "100px", :classid => "clsid:D27CDB6E-AE6D-11cf-96B8-444553540000", :width => "985px" }
+            %param{ :name => "movie", :value => "/banner/capital_985-100.swf" }
+            %object{ :type => "application/x-shockwave-flash", :height => "100px", :data => "/banner/capital_985-100.swf", :width => "985px" }
+    /
+      \-------- Header --------
+    %table{ :border => "0px", :height => "50px", :width => "985px" }
+      %tr
+        %td{ :valign => "top", :align => "left" }
+          %h1
+            Pump.kg
+          %h2
+            качай сколько влезет ;)

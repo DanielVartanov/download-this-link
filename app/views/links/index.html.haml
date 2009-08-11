@@ -1,16 +1,14 @@
 %br/
-%table{:width => "985px", :border => "0px", :align => "center", :valign => "top",:bordercolor => "#336699", :cellpadding => "2", :cellspacing => "2" }
+%table{:width => "985px", :border => "0px", :align => "center", :valign => "top",:bordercolor => "#336699", :cellpadding => "0", :cellspacing => "0" }
   %tr
-    %td{:align => "left"}
-      %table{:width => "980px", :border => "0px", :height => "20px"}
-        %tr
-          %td{:align=>"left", :width => "150"}
-            = link_to "Добавить ссылку", resource(:links,:new)
-          %td{:align => "left", :width => "150px"}
-            = link_to "Поиск", url(:controller => "search", :action => "index")
-          %td{:align => "right"}
-            = link_to "Реклама на сайте","/reklama.html"
-  %h2 Ограничение на размер файла - 300 Мб
+    %td{:align => "center", :valign => "bottom"}
+      = link_to "Добавить ссылку", resource(:links,:new)
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      = link_to "Поиск", url(:controller => "search", :action => "index")
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://pump.kg/reklama.html", :style => " color:#c55" }
+        %span{ :style => "color:#c55" }
+          Реклама на сайте
   %tr{:valign => "top", :align =>"left"}
     %td
       %table{:width => "830px", :border => "0" }

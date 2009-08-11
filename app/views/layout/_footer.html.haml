@@ -1,34 +1,79 @@
-%div{:align=>"center"}
-  
-%br/
-%br/
-%table{:width=>"985px",:border=>"0"}
-  %tr
-    %td{:align => "left",:width => "150px"}
-      %a{:target => "_top", :href => "http://top.mail.ru/jump?from=1669526"}
-        %img{:src => "http://d9.c7.b9.a1.top.mail.ru/counter?id=1669526;t=210", :border=>"0", :height=>"31", :width=>"88", :alt=>"Рейтинг@Mail.ru"}
-      %script#top100Counter{ :type => "text/javascript", :src => "http://cnt.rambler.ru/top100.jcn?1807849" }
-      %noscript
-        %a{ :href => "http://top100.rambler.ru/home?id=1807849", :target => "_blank" }
-          %img{ :src => "http://cnt.rambler.ru/top100.cnt?1807849", :border => "0", :height => "63", :alt => "Rambler's Top100", :width => "81" }
-  %tr
-    %td
-      /
-        SpyLOG
-      %span#spylog2026276
-      %script{ :type => "text/javascript" }
-        var spylog = { counter: 2026276, image: 5003, next: spylog }; document.write(unescape("%3Cscript src=%22http" +
-        (("https:" == document.location.protocol) ? "s" : "") +
-        "://counter.spylog.com/cnt.js%22 defer=%22defer%22%3E%3C/script%3E"));
-      /
-        SpyLOG
-  %tr
-    %td{:align=>"left"}
-      %div{:alink=>"blue"}
-        %a{ :href => "mailto:pump.kg@mail.ru" }
-          Администрация
-    %td{:align=>"right"}
-      Сайт сделали: 
-      = link_to "Даниил Вартанов", "mailto:dan@vartanov.net"
-      и 
-      = link_to "Андрей Титов", "mailto:titov.andrey@gmail.com"
+%div{ :align => "left", :style => "width:985px; height:155px; max-width:985px; max-height:155px" }
+  /
+    \-------- Foot Banner Place --------
+  %table{ :border => "0px", :height => "105px", :width => "985px" }
+    %tr
+      %td
+        %nbsp
+  /
+    \-------- Счетчики --------
+  %table{ :border => "0px", :height => "55px", :width => "160px" }
+    %tr
+      %td{ :valign => "bottom", :width => "40px" }
+        %p
+          /
+            Rating@Mail.ru counter
+          %script{ :language => "javascript", :type => "text/javascript" }
+            /
+              d=document;var a='';a+=';r='+escape(d.referrer);js=10;//
+          %script{ :language => "javascript1.1", :type => "text/javascript" }
+            /
+              a+=';j='+navigator.javaEnabled();js=11;//
+          %script{ :language => "javascript1.2", :type => "text/javascript" }
+            /
+              s=screen;a+=';s='+s.width+'*'+s.height;
+              a+=';d='+(s.colorDepth?s.colorDepth:s.pixelDepth);js=12;//
+          %script{ :language => "javascript1.3", :type => "text/javascript" }
+            /
+              js=13;//
+          %script{ :language => "javascript", :type => "text/javascript" }
+            /
+              d.write('<a href="http://top.mail.ru/jump?from=1669526" target="_top">'+
+              '<img src="http://d9.c7.b9.a1.top.mail.ru/counter?id=1669526;t=211;js='+js+
+              a+';rand='+Math.random()+'" alt="Рейтинг@Mail.ru" border="0" '+
+              'height="31" width="88"><\/a>');if(11<js)d.write('<'+'!-- ');//
+          %noscript
+            %a{ :href => "http://top.mail.ru/jump?from=1669526", :target => "_top" }
+              %img{ :src => "http://d9.c7.b9.a1.top.mail.ru/counter?js=na;id=1669526;t=211", :border => "0", :height => "31", :alt => "\320\345\351\362\350\355\343@Mail.ru", :width => "88" }
+          %script{ :language => "javascript", :type => "text/javascript" }
+            /
+              if(11<js)d.write('--'+'>');//
+          /
+            \// Rating@Mail.ru counter
+      %td{ :valign => "bottom", :width => "40px" }
+        %p
+          /
+            SpyLOG
+          %span#spylog2026276
+          %script{ :type => "text/javascript" }
+            var spylog = { counter: 2026276, image: 5003, next: spylog }; document.write(unescape("%3Cscript src=%22http" +
+            (("https:" == document.location.protocol) ? "s" : "") +
+            "://counter.spylog.com/cnt.js%22 defer=%22defer%22%3E%3C/script%3E"));
+          /
+            SpyLOG
+      %td{ :height => "40px", :valign => "bottom" }
+        %p
+          /
+            begin of Top100 logo
+          %a{ :href => "http://top100.rambler.ru/home?id=1807849", :target => "_blank" }
+            %img{ :src => "http://top100-images.rambler.ru/top100/banner-88x31-rambler-blue3.gif", :border => "0", :height => "31", :alt => "Rambler's Top100", :width => "88" }
+          /
+            end of Top100 logo
+  /
+    \-------- Footer --------
+  %table{ :border => "0px", :height => "25px", :width => "985px" }
+    %tr
+      %td{ :valign => "top", :align => "left" }
+        %p{ :style => "font-size:10pt" }
+          %a{ :href => "mailto:pump.kg@mail.ru", :style => "color:#0000FF" }
+            Администрация
+      %td{ :valign => "top", :align => "right" }
+        %p{ :style => "font-size:10pt;" }
+          Сайт сделали:
+          %a{ :href => "mailto:dan@vartanov.net", :style => "color:#0000FF" }
+            \&nbsp;Даниил Вартанов
+          \&nbsp;и &nbsp;
+          %a{ :href => "mailto:titov.andrey@gmail.com", :style => "color:#0000FF" }
+            Андрей Титов
+/
+  \-------- The END ;) --------

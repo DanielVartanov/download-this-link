@@ -1,3 +1,4 @@
-- if params.key? :url
-  %h3 Нет такой ссылки, сорри
 = partial 'search/form'
+- if params.key? :url
+  %p
+    %h4 Нет такой ссылки, сорри

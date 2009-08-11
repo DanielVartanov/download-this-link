@@ -1,29 +1,33 @@
-= error_messages_for @link, :header => "<h2>Ошибка</h2>"
-%br/
-%table{:align=> "center", :width => "995px", :height =>"450px", :border=>"0px"}
-  %tr
-    %td
-      %table{:width => "980px", :border => "0px", :height => "20px"}
-        %tr
-          %td{:align=>"left", :width => "150"}
-            = link_to " Журнал закачек", resource(:links)
-          %td{:align => "left", :width => "150px"}
-            = link_to "Поиск", url(:controller => "search", :action => "index")
-          %td{:align => "right"}
-            = link_to "Реклама на сайте","/reklama.html"
-  %tr{:align=> "center", :width => "985px"}
-    %td{:width => "830px", :valign => "top"}
-      = form_for @link, :action => resource(:links) do
-        %h2 Ограничение на размер файла - 300 Мб
-        %p{:align=> "left"}
-          %b
-            = "URL:"
-        %p{:align=> "left"}
-          = text_field :url,:size => 50        
-        %p{:align=> "left"}
-          %b
-            = "Описание:"
-        %p{:align=> "left"}
-          = text_field :description, :size =>100
-        %p{:align =>"left"}
-          = submit "Добавить ссылку"
+%div{:style => "width:985px; height:365px; max-width:985px; max-height:360px align=\"left\""}
+  %table{:align=> "center", :width => "985px", :height =>"20px", :border=>"0px"}
+    %tr
+      %td{:valign => "bottom", :align => "center"}
+        = link_to " Журнал закачек", resource(:links)
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        = link_to "Поиск", url(:controller => "search", :action => "index")
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        %a{ :href => "http://pump.kg/reklama.html", :style => " color:#c55" }
+          %span{ :style => "color:#c55" }
+            Реклама на сайте
+    %tr{:align=> "center", :height => "340px"}
+      %td{:width => "830px", :valign => "top"}
+        = form_for @link, :action => resource(:links) do
+          %br
+          %h2 Ограничение на размер файла - 300 Мб
+          %p{:style =>" font-weight:bold; font-size:10pt"}
+            %b
+              = "URL:"
+          %p{:align=> "center"}
+            = text_field :url, :size => "100", :maxlength => "250"
+          %p{:style =>" font-weight:bold; font-size:10pt"}
+            %b
+              = "Описание:"
+          %p{:align=> "center"}
+            = text_field :description, :size => "100", :maxlength => "250"
+          %p{:align =>"center"}
+            = submit "Добавить ссылку"
+          %br
+          %h4
+            = error_messages_for @link, :header => "<h4>Ошибка</h4>"
+
+      %td{:width => "155px"}

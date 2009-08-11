@@ -1,19 +1,26 @@
-%table{:width => "980px", :border => "0px", :height => "20px"}
+%br
+%br
+%table{:width => "980px", :border => "0px", :height => "200px"}
   %tr
-    %td{:align=>"left", :width => "150"}
+    %td{{:valign => "bottom", :align => "center"}}
       = link_to "Добавить ссылку", resource(:links,:new)
-    %td{:align => "left", :width => "150px"}
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       = link_to " Журнал закачек", resource(:links)
-    %td{:align => "right"}
-      = link_to "Реклама на сайте","/reklama.html"
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      %a{ :href => "http://pump.kg/reklama.html", :style => " color:#c55" }
+        %span{ :style => "color:#c55" }
+          Реклама на сайте
   %tr
     %td
       %p
         =" "
   %tr
-    %td
+    %td{:align => "center"}
       = form(:action => url(:controller => "search", :action => "index")) do
+        %p{:style =>" font-weight:bold; font-size:10pt"}
+          %b
+            = "Поиск по URL:"
         %p
-          = text_field :name => "url", :size => 50, :label => "Поиск по url:"
+          = text_field :name => "url", :size => 100
         %p
           = submit "Найти"
