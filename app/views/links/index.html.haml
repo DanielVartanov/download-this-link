@@ -47,7 +47,7 @@
           %tr{ :align => "Left" }
             %td{:width => "250"}
               = link_to link.url[0..30], link.url
-              %h5= link.description
+              %h5= h link.description
             %td
               ="В очереди" if link.status == "queued"
               ="Качаю" if link.status == "downloading"
