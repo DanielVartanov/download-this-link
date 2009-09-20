@@ -40,4 +40,5 @@ Merb::Router.prepare do
 
   # match('/').to(:controller => 'links', :action =>'index')
   match('/').to(:controller => 'links', :action =>'new')
+  match('/player/:id').to(:controller => 'links', :action => 'player')
 end

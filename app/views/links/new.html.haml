@@ -24,12 +24,24 @@
               = "Описание:"
           %p{:align=> "center"}
             = text_field :description, :size => "100", :maxlength => "250"
+          %p{:align=> "center"}
+            %img{:src =>"http://captchator.com/captcha/image/" + session.session_id}
+          %p{:style =>" font-weight:bold; font-size:10pt"}
+            %b
+              = "Капча:"
+          %p{:align=> "center"}
+            = text_field :captcha_value, :size => "10", :maxlength => "10"
+
+          %p{:align=> "center"}
+            = text_field :captcha_val, :value => session.session_id , :type => "hidden", :size => "50", :maxlength => "50"
+
           %p{:align =>"center"}
             = submit "Добавить ссылку"
           %br
           %h4
             = error_messages_for @link, :header => "<h4>Ошибка</h4>"
-
+            = @error
+          
       %td{:width => "155px", :valign => "top"}
-        %a{:href => "http://myforum.mega.kg/forums/", :target => "_blank"}
+        %a{:href => "http://myforum.urban.kg/", :target => "_blank"}
           %img{:src => "/banner/Index_banner 150_180_1.png", :border => "0",:margin =>"0px"}
