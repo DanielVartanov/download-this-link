@@ -15,19 +15,17 @@
           Реклама на сайте
       %br
       %br
+  
   %tr
     %td{:align => "center"}
-      = will_paginate @links
+     
   %tr{:valign => "top", :align =>"left"}
     %td
       %table{:width => "830px", :border => "0" }
         %tr{ :align => "left" }
           %th
             %h2
-              Ссылка
-          %th
-            %h2 
-              Состояние
+              Файл
           %th
             %h2
               Размер
@@ -35,33 +33,14 @@
               (Мб)
           %th
             %h2
-              Скорость 
-              %br/
-              (Кб\с)
-          %th
-            %h2
-              Время              
-          %th
-            %h2
-              Скачано
-          %th
-            %h2
-
-        - @links.each do |link|
+              
+        - @video_links.each do |link|
           %tr{ :align => "Left" }
             %td{:width => "250"}
-              = link_to link.url[0..30], link.url
-              %h5= h link.description
-            %td
-              ="В очереди" if link.status == "queued"
-              ="Качаю" if link.status == "downloading"
-              ="Готово" if link.status == "downloaded"
-              ="Ошибка" if link.status == "failure"
-            %td= link.file_size.nil? ? '-' : (link.file_size / 1.megabyte)
-            %td= link.download_speed.nil? ? '-' : '%.1f' % (link.download_speed.to_f / 1.kilobyte)
-            %td= link.downloading_time.nil? ? '-' : display_downloading_time(link.downloading_time.to_i)
-            %td= link.complete_percentage.nil? ? '-' : "#{link.complete_percentage}%"
-            %td= link_to 'Скачать файл', absolute_url('files/' + URI.escape(link.file_path)) if link.downloaded? and not link.file_path.nil?
+              = link_to link.file_path, absolute_url('files/' + URI.escape(link.file_path)) if link.downloaded? and not link.file_path.nil?
+              %h5= h link.description if link.downloaded? and not link.file_path.nil?
+            %td= link.file_size.nil? ? '-' : (link.file_size / 1.megabyte) if link.downloaded? and not link.file_path.nil?
+            
     %td{ :width => "155" }
       %p{ :align => "center" }
       %p{ :align => "center" }

@@ -1,0 +1,13 @@
+%div{:align => "center"}
+  %table
+    %tr
+      %td
+        &nbsp;&nbsp;&nbsp;
+    %tr
+      %td
+        %object{:type => "application/x-shockwave-flash", :data => "/flash/ump3player_500x70.swf", :height => "70", :width => "470"}
+          %param{:name => "wmode", :VALUE => "transparent"}
+          %param{:name =>"allowFullScreen", :value => "true"}
+          %param{:name => "allowScriptAccess", :value => "always"}
+          %param{:name => "movie", :value => "/flash/ump3player_500x70.swf"}
+          %param{:name => "FlashVars", :value => "way=" + absolute_url('files/' + URI.escape(@pl_au_link.file_path)) +"&amp;swf=/flash/ump3player_500x70.swf&amp;w=470&amp;h=70&amp;time_seconds=0&amp;autoplay=0&amp;q=&amp;skin=white&amp;volume=70&amp;comment="}

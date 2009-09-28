@@ -33,7 +33,6 @@ class Links < Application
     
   end
   
-
   def show
     @link = Link.find(params[:id])
     display @link
@@ -44,8 +43,8 @@ class Links < Application
     display @links
   end
 
-  def player
-     @pl_link = Link.find(params[:id])
-     display @pl_link
-  end
+ # def audio
+ #   @audio_links = Link.find_by_sql["SELECT * FROM links WHERE file_path like '%.mp3'"]
+ #    display @audio_links
+ # end
 end
