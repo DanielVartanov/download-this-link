@@ -4,11 +4,13 @@
   %table{ :border => "0px", :height => "105px", :width => "985px", :align =>"center" }
     %tr
       %td{:align=> "center", :valign => "middle"}
-        %object{:classid => "clsid:D27CDB6E-AE6D-11cf-96B8-444553540000", :codebase => "http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#3,0,0,0", :width => "985", :height => "100"}
-          %param{:name => "SRC", :value => "/banner/985х100.swf"}
-          %param{:name => "bgcolor", :value => "#990000"}
-          %embed{:src => "/banner/985х100.swf", :pluginspage => "http://www.macromedia.com/shockwave/download/", :type => "application/x-shockwave-flash", :width => "985", :height => "100", :bgcolor => "#990000"}
-   
+        %OBJECT{:classid => "clsid:D27CDB6E-AE6D-11cf-96B8-444553540000", :codebase => "http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0", :WIDTH => "985", :HEIGHT => "100"}
+          %PARAM{:NAME => "movie", :VALUE => "/banner/985_100.swf"}
+          %param{:name => "FlashVars", :value => "cset=1&tnumber=8&city0=12375&city1=12495&city2=33008&city3=33177&city4=33187&city5=99884&city6=33393&city7=33345&lang=en"}
+          %PARAM{:NAME => "quality", :VALUE => "high"}
+          %PARAM{:NAME => "bgcolor", :VALUE => "#FFFFFF"}
+          %EMBED{:src => "/banner/985_100.swf", :quality => "high", :bgcolor => "#FFFFFF",  :WIDTH => "985", :HEIGHT => "100", :NAME => "mtown", :ALIGN => "", :TYPE => "application/x-shockwave-flash", :PLUGINSPAGE =>"http://www.macromedia.com/go/getflashplayer"}
+ 
   /
     \-------- Счетчики --------
   %table{ :border => "0px", :height => "55px", :width => "160px" }
