@@ -2,6 +2,7 @@ body {
   font-family: Arial, Verdana, sans-serif;
   font-size: 12px;
   background-color: #fff;
+  margin: 0;
 }
 * {
   margin: 0px;
@@ -61,7 +62,6 @@ h3 {
   padding: 5px;
   margin-top: 5px;
 }
-
 h4 {
   font-size: 12px;
   color: #c55;
@@ -69,6 +69,10 @@ h4 {
   font-weight: 300;
   background-color: #fff;
 }
+
+}
+
+
 #left-container {
   float: left;
   width: 250px;
@@ -102,6 +106,7 @@ a {
   color: #4d9b12;
   background-color: #fff;
   text-decoration: none;
+  font-size: 10pt;
 }
 a:hover {
   color: #4d9b12;
