@@ -1,7 +1,7 @@
 %div{:style => "width:985px", :align => "center"}
   %script{ :src => "http://yabloko.kg/rotator/graphic.php?id=78" }
 
-%div{:style => "width:985px; height:450px; max-width:985px; max-height:450px align=\"left\""}
+%div{:style => "width:985px; height:480px; max-width:985px; max-height:480px align=\"left\""}
   %table{:align=> "center", :width => "985px", :height =>"20px", :border=>"0px"}
     %tr
       %td{:valign => "bottom", :align => "center"}
@@ -21,8 +21,23 @@
         %br
         %br
 
-    %tr{:align=> "center", :height => "340px"}
-      %td{:width => "830px", :valign => "top"}
+    %tr{:align=> "center", :height => "350px"}
+      %td{:width => "985px", :valign => "top"}
+        %p{ :style => "font:Arial, Helvetica, sans-serif; font-size:12px; color: #666666" }
+          Уважаемые пользователи!
+          %br
+          Ресурс
+          %span{ :style => "color:#990000;" }
+            www.pump.kg
+          нуждается в спонсоре, в этой связи сервис по скачиванию файлов с внешнего мира временно не доступен.
+          %br
+          В данный момент на сайте доступны только ранее скачанные файлы.
+          %br
+          Приносим свои извенения.
+          %br
+          С любыми предложениями по сотрудничеству обращайтесь в
+          %a{ :href => "mailto:pump.kg@mail.ru", :style => "color: rgb(0, 0, 255);" }
+            администрацию.
         = form_for @link, :action => resource(:links) do
           %br
           %h2 Ограничение на размер файла - 300 Мб
@@ -53,10 +68,7 @@
           %h4
             = error_messages_for @link, :header => "<h4>Ошибка</h4>"
             = @error
-          
-      %td{:width => "155px", :valign => "top"}
-        %a{:href => "http://myforum.urban.kg/", :target => "_blank"}
-          %img{:src => "/banner/Index_banner 150_180_1.png", :border => "0",:margin =>"0px"}
+        
         
         
 

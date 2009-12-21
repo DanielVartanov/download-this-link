@@ -1,4 +1,4 @@
-require 'curb'
+#require 'curb'
 
 class Downloader
   MAX_DOWNLOAD_SIZE = 300000000
